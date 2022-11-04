@@ -38,7 +38,7 @@ def calculate():
         result = x + y
         Operator.value = "addition"
 
-    elif any(x in operation_type for x in ["multiplication" , "times", "multiply"]):
+    elif any(x in operation_type for x in ["multiplication" , "times", "multiply", "product"]):
         result = x * y
         Operator.value = "multiplication"
 
