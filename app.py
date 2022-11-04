@@ -32,7 +32,7 @@ def calculate():
     
     if any(x in operation_type for x in ["subtraction", "subtract", "minus", "difference"]):  # checking if any of the string occurs in operation type
         result = x - y
-        Operator.value = "substraction"
+        Operator.value = "subtraction"
 
     elif any(x in operation_type for x in ["addition", "add", "plus", "join"]):
         result = x + y
