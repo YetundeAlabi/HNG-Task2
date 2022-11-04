@@ -9,7 +9,7 @@ load_dotenv(dotenv_path)
 app = Flask(__name__)
 cors = CORS(app)
 
-class Calulator(Enum):
+class Operator(Enum):
     addition = "+"
     subtraction = "-"
     multiplication = "*"
@@ -28,24 +28,25 @@ def calculate():
     operation_type = body.get("operation_type")
     x = body["x"]
     y = body.get("y")
+
     
-    if "subtraction" in operation_type:
+    if any(x in operation_type for x in ["subtraction", "subtract", "minus", "difference"]):  # checking if any of the string occurs in operation type
         result = x - y
-        Calulator.value = "substraction"
+        Operator.value = "substraction"
 
-    elif "addition" in operation_type:
+    elif any(x in operation_type for x in ["addition", "add", "plus", "join"]):
         result = x + y
-        Calulator.value = "addition"
+        Operator.value = "addition"
 
-    elif "multiplication" in operation_type:
+    elif any(x in operation_type for x in ["multiplication" , "times", "multiply"]):
         result = x * y
-        Calulator.value = "multiplication"
+        Operator.value = "multiplication"
 
 
     return jsonify({
         "slackUsername": "Nimi",
         "result": result,
-        "operation_type": Calulator.value
+        "operation_type": Operator.value
     }), 200, {"content-type": "application/json"}
 
 
@@ -54,22 +55,3 @@ if __name__ == "__main__":
     app.run(debug=True)
     port = int(os.environ.get('PORT', 33507))
 
-
-
-
-
-
-
-
-
-    # or "subtract" or "minus" or "difference"
-    # , "multiply", "times", "mul"
-    #  or "add" or "join" 
-    # integers = [x for x in operation_type.isdigit()]
-    # if integers in operation_type:
-    #     opt_x = int(integers[0])
-    #     opt_y = int(integers[1])
-    
-    #     if opt_x == x and opt_y == y :
-    #         continue
-    # else:
