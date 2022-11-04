@@ -5,4 +5,4 @@ x can be a number and Integer datatype
 y can be a number and Integer datatype
 
 A response with the result of the operation and your slack username is returned
-{ “slackUsername”: String, "operation_type" : Enum. value, “result”: Integer }.
+{ “slackUsername”: String, "operation_type" : Enum. value, “result”: Integer }
